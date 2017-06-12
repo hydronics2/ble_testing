@@ -159,6 +159,8 @@ var Puck = (function() {
       }
     };
 
+    
+    //Added this to connect to all devices... -th
     let filters = [];
     let options1 = {};
     if (1) {
@@ -166,8 +168,6 @@ var Puck = (function() {
     }
     console.log('Requesting Bluetooth Device...');
     console.log('with ' + JSON.stringify(options1));
-
-
 
     navigator.bluetooth.requestDevice(options1)
     .then(device => {
