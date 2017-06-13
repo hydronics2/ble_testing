@@ -159,12 +159,12 @@ var Puck = (function() {
       }
     };
 
-    
+
     //Added this to connect to all devices... -th
     let filters = [];
     let options1 = {};
     if (1) {
-      options.acceptAllDevices = true;
+      options1.acceptAllDevices = true;
     }
     console.log('Requesting Bluetooth Device...');
     console.log('with ' + JSON.stringify(options1));
