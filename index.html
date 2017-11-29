@@ -1,12 +1,69 @@
-<!DOCTYPE HTML>
-<html>
-    <head>
-        <title>Web Ble</title>
-    </head>
-    <body>
-<button onclick="myFunction()">Click me</button>
-<p></p>
-<input type="text" id="mytext">
-    </body>
-    <script type="text/javascript" src="tenBytes.js"></script>
+nn<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <title>test</title>
+    <style type="text/css">
+    .dashboard .head{
+        background: #1e1e1e; /* Old browsers */
+        text-align= center;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="play-screen" class="dashboard">
+        <div class="head">
+            <a onclick="connectBle()"><img src="img/bluetoothicon.png"></a>
+        </div>
+    </div>
+</body>
+
+<script>
+           //----------------BLE FUNCTIONS
+    var myCharacteristic;
+    function connectBle(){
+        console.log("connection");
+
+        return navigator.bluetooth.requestDevice({
+        filters: [{services: [0x180D]}]})
+        .then(device => {
+            return device.gatt.connect();
+        })
+        .then(server => {
+            console.log("getting primary service");
+            return server.getPrimaryService(0x180D);
+        })
+        .then(service => {
+           console.log("connected, got primary service");
+           console.log("getting characteristics");
+           return service.getCharacteristic(0x2A37) //heart rate measurement
+        })
+        .then(characteristic => {
+            myCharacteristic = characteristic;
+            return myCharacteristic.startNotifications().then(_ => {
+            console.log(">Notifications started");
+            myCharacteristic.addEventListener('characteristicvaluechanged',handleNotifications);
+            });
+        })
+        .catch(error => {
+          console.log("arg!" + error);
+        });
+    }
+
+    function handleNotifications(event) {
+      let value = event.target.value;
+      let a = [];
+      // Convert raw data bytes to hex values just for the sake of showing something.
+      // In the "real" world, you'd use data.getUint8, data.getUint16 or even
+      // TextDecoder to process raw data bytes.
+      for (let i = 0; i < value.byteLength; i++) {
+        a.push('0x' + ('00' + value.getUint8(i).toString(16)).slice(-2));
+      }
+      console.log('> ' + a.join(' '));
+    }
+</script>
+
+<script src="https://1.jsconsole.com/js/remote.js?ce5aca06-6ab6-4012-a4ce-8cca9ab25e9f"></script>
+
 </html>
