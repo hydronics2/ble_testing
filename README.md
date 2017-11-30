@@ -1,6 +1,10 @@
 # ble_testing
 
 Program your Feather nrF52 and then open a chrome web browser in MacOS, chromeOS, Android, or in ios using the safari wrapper webble. The files must be hosted as https:// such as https://mywebsite.com</p>
+
+https://htmlpreview.github.io/?https://github.com/hydronics2/nrF52_web-ble_example/blob/master/index.html
+
+
 <p>Click on the bluetooth icon for your browser to connect to the nrF52.
 
 I finally got all the code up and running on Webble. It’s a $2 app on itunes that’s a wrapper for Safari that exposes the web-ble functions we’re using to connect over Bluetooth to the eggs. It hadn’t worked previously because of a bug but by updating ios to 11.0 and downloading the newest WEBBLE app 1.1.5 it all works seamlessly.
