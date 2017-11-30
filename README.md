@@ -2,7 +2,7 @@
 
 Program your Feather nrF52 and then open a chrome web browser in MacOS, chromeOS, Android, or in ios using the safari wrapper webble. The files must be hosted as https:// such as https://mywebsite.com</p>
 
-https://cdn.rawgit.com/hydronics2/nrF52_web-ble_example/8ede9c4b/index.html
+Here's a preview: https://cdn.rawgit.com/hydronics2/nrF52_web-ble_example/8ede9c4b/index.html
 
 
 <p>Click on the bluetooth icon for your browser to connect to the nrF52.
