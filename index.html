@@ -6,7 +6,9 @@ nn<!DOCTYPE html>
     <style type="text/css">
     .dashboard .head{
         background: #1e1e1e; /* Old browsers */
-        text-align= center;
+    }
+    .dashboard .text{
+        background: #FFFFFF; /* Old browsers */
     }
     </style>
 </head>
@@ -15,6 +17,13 @@ nn<!DOCTYPE html>
     <div id="play-screen" class="dashboard">
         <div class="head">
             <a onclick="connectBle()"><img src="img/bluetoothicon.png"></a>
+            <br></br>
+        </div>
+        <div class="text">
+            <p>Program your Feather nrF52 and then open a chrome web browser in MacOS, chromeOS, Android, or in ios using the safari wrapper webble. The files must be hosted as https:// such as https://mywebsite.com</p>
+            <p>Click on the bluetooth icon for your browser to connect to the nrF52.
+            <p>Your first new byte</p>
+            <p id="firstByte">update bytes show up here</p>
         </div>
     </div>
 </body>
@@ -61,9 +70,9 @@ nn<!DOCTYPE html>
         a.push('0x' + ('00' + value.getUint8(i).toString(16)).slice(-2));
       }
       console.log('> ' + a.join(' '));
+      document.getElementById("firstByte").innerHTML = a.join(' ');
     }
 </script>
 
-<script src="https://1.jsconsole.com/js/remote.js?ce5aca06-6ab6-4012-a4ce-8cca9ab25e9f"></script>
 
 </html>
